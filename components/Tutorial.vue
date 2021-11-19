@@ -1,190 +1,319 @@
 <template>
   <div class="main">
-    <div class="main__fist-column">
-      <h3 class="main__fist-column-heading">Добавление товара</h3>
-      <div class="main__fist-column-item">
-        <h6 class="main__fist-column-title">Наименование товара</h6>
-        <input type="text" placeholder="Введите наименование товара">
-        <h6 class="main__fist-column-description">Описание товара</h6>
-        <input type="text" placeholder="Введите описание товара">
-        <h6 class="main__fist-column-img">Ссылка на изображение товара</h6>
-        <input type="text" placeholder="Введите ссылку">
-        <h6 class="main__fist-column-price">Цена товара</h6>
-        <input type="text" placeholder="Введите цену">
-        <button class="button" @click="say('hi')">Добавить товар</button>
+    <div class="fist-column">
+      <h1 class="fist-column__header">Добавление товара</h1>
+      <div class="form">
+        <h4 class="form__title">Наименование товара</h4>
+        <input
+          class="form__input"
+          type="text"
+          placeholder="Введите наименование товара"
+          v-model="title"
+        />
+        <span>Поле является обязательным</span>
+        <h4 class="form__title">Описание товара</h4>
+        <textarea
+          class="form__area"
+          type="text"
+          placeholder="Введите описание товара"
+          v-model="descr"
+        ></textarea>
+        <h4 class="form__title">Ссылка на изображение товара</h4>
+        <input class="form__input" type="text" placeholder="Введите ссылку" v-model="link"/>
+        <span>Поле является обязательным</span>
+        <h4 class="form__title">Цена товара</h4>
+        <input class="form__input" type="text" placeholder="Введите цену" v-model="price"/>
+        <span>Поле является обязательным</span>
+        <button class="form__button" @click="say()">Добавить товар</button>
       </div>
     </div>
-    <div class="main__second-column">
-
+    <div class="second-column">
+      <button class="button-sort">
+        <p class="button-sort__text">По умолчанию</p>
+        <img src="" />
+      </button>
+      <div class="cards">
+        <div class="card">
+          <div class="card__image"></div>
+          <div class="card__text">
+            <h2 class="card__title">Наименование товара</h2>
+            <p class="card__descr">
+              Довольно-таки интересное описание товара в несколько строк.
+              Довольно-таки интересное описание товара в несколько строк
+            </p>
+            <h2 class="card__price">10 000 руб.</h2>
+          </div>
+          <div class="card__del"><img /></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style>
-
-.main {
-  display: flex;
-  height: 100vh;
-  border: 1px solid red;
-  padding: 32px;
-  margin: 0;
+<style >
+* {
   box-sizing: border-box;
-}
-
-.main__fist-column {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 332px;
-  border: 1px solid red;
-}
-
-.main__second-column {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: 100%;
-  gap: 16px;
-  width: 100%;
-  border: 1px solid red;
-}
-
-.main__fist-column-heading {
+  font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
   margin: 0;
   padding: 0;
-  font-family: Source Sans Pro;
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 35px;
-
-color: #3F3F3F;
 }
 
-.main__fist-column-item {
+.main {
+  width: 1440px;
+  display: flex;
+  background: rgba(255, 254, 251, 0.8);
+}
+
+.fist-column {
+  width: 332px;
+  display: flex;
+  flex-direction: column;
+  margin: 32px 16px 0 32px;
+}
+
+.fist-column__header {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
+  color: #3f3f3f;
+}
+
+.form {
+  width: 332px;
+  height: 440px;
   display: flex;
   flex-direction: column;
   margin-top: 16px;
   padding: 24px;
-  width: 332px;
-  height: 440px;
-  border: 1px solid red;
-  box-sizing: border-box;
-
-background: #FFFEFB;
-box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-border-radius: 4px;
+  background: #fffefb;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
 }
 
-.main__fist-column-title {
-
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: normal;
-font-size: 10px;
-line-height: 13px;
-/* identical to box height */
-letter-spacing: -0.02em;
-
-/* Temp / Darks / Lesser */
-color: #49485E;
-}
-.main__fist-column-description {
-
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: normal;
-font-size: 10px;
-line-height: 13px;
-/* identical to box height */
-letter-spacing: -0.02em;
-
-/* Temp / Darks / Lesser */
-color: #49485E;
+.form__title {
+  height: 13px;
+  margin-bottom: 4px;
+  margin-top: 16px;
+  font-size: 10px;
+  line-height: 13px;
+  letter-spacing: -0.02em;
+  color: #49485e;
 }
 
-.main__fist-column-img {
-
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: normal;
-font-size: 10px;
-line-height: 13px;
-/* identical to box height */
-letter-spacing: -0.02em;
-
-/* Temp / Darks / Lesser */
-color: #49485E;
+.form__title:first-child {
+  margin-top: 32px;
 }
 
-.main__fist-column-price {
-
-font-family: Source Sans Pro;
-font-style: normal;
-font-weight: normal;
-font-size: 10px;
-line-height: 13px;
-/* identical to box height */
-letter-spacing: -0.02em;
-
-/* Temp / Darks / Lesser */
-color: #49485E;
+.form__title::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: #ff8484;
+  border-radius: 4px;
 }
 
-.main__second-column-card{
-  width: 332px;
+.form__input {
+  height: 36px;
+  background: #fffefb;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 4px;
+}
+
+span {
+  margin-top: 4px;
+  font-size: 8px;
+  line-height: 10px;
+  letter-spacing: -0.02em;
+  color: #ff8484;
+}
+
+.form__area {
+  height: 108px;
+  margin-bottom: 16px;
+  background: #fffefb;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 4px;
+}
+
+::placeholder {
+  padding: 10px 0 11px 16px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+}
+
+.form__button {
+  height: 36px;
+  margin-top: 8px;
+  background: #eeeeee;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #b4b4b4;
+}
+
+.form__button_ok {
+  background: #7bae73;
+  color: #ffffff;
+}
+
+.second-column {
+  width: 100%;
+  margin-top: 31px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-sort {
+  width: 121.49px;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  background: #fffefb;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: 32px;
+}
+
+.button-sort__text {
+  padding: 10px 0 11px 16px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+}
+
+.cards {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 332px);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
+
+.card {
+  position: relative;
   height: 423px;
+  display: flex;
+  flex-direction: column;
+  background: #fffefb;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
   border: 1px solid red;
 }
 
-.main__second-column-card-img {
+.card__image {
+  background: url();
   width: 100%;
   height: 200px;
 }
 
-.main__second-column-card-description {
-  width: 300px;
-  height: 80px;
+.card__text {
+  padding: 16px;
 }
 
+.card__title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  color: #3f3f3f;
+}
 
+.card__descr {
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3f3f3f;
+}
 
+.card__price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: #3f3f3f;
+}
+.card__del {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 32px;
+  height: 32px;
+  background: #ff8484;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 </style>
 
 
 
 <script>
 export default {
+  data() {
+        return {
+            title: '',
+            link: '',
+            descr: '',
+            price: '',
+        };
+  },
   methods: {
-    say: function (message) {
-      const cards = document.querySelector('.main__second-column');
+    say: function () {
+      const cards = document.querySelector('.cards');
       const card = document.createElement('div');
       const img = document.createElement('img');
       const title = document.createElement('h3');
       const description = document.createElement('p');
       const price = document.createElement('p');
+      const del = document.createElement('div');
 
 
 
 
-      card.classList.add('main__second-column-card');
-      img.classList.add('main__second-column-card-img');
-      title.classList.add('main__second-column-card-title');
-      description.classList.add('main__second-column-card-description');
-      price.classList.add('main__second-column-card-price');
 
-    img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/240px-Cat03.jpg';
-    title.textContent = 'lolololol';
-    description.textContent = 'lolololollololol ollolololollolololollololololl olololollolololollolololol';
-    price.textContent = '100500';
 
-      alert(message);
+      card.classList.add('card');
+      img.classList.add('card__image');
+      title.classList.add('card__title');
+      description.classList.add('card__descr');
+      price.classList.add('card__price');
+      del.classList.add('card__del');
+
+    img.src = this.link;
+    title.textContent = this.title;
+    description.textContent = this.descr;
+    price.textContent = this.price;
+    //https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/240px-Cat03.jpg
+
+
       card.appendChild(img);
       card.appendChild(title);
       card.appendChild(description);
       card.appendChild(price);
+      card.appendChild(del);
       cards.appendChild(card);
+      function lol() {
+      let del = document.querySelector('.card__del')
+      console.log(del, 'fgfgfgfgfgfgfg')
+      // del.addEventlistener('click', () => {alert('loh')})
+
+    }
+
+    lol()
     }
   }
+
 }
 </script>
+
+
