@@ -24,7 +24,7 @@
         <h4 class="form__title">Цена товара</h4>
         <input class="form__input" type="text" placeholder="Введите цену" v-model="price"/>
         <span>Поле является обязательным</span>
-        <button class="form__button" @click="say()">Добавить товар</button>
+        <button  class="form__button" @click="say()">Добавить товар</button>
       </div>
     </div>
     <div class="second-column">
@@ -33,7 +33,7 @@
         <img src="" />
       </button>
       <div class="cards">
-        <div class="card">
+        <!-- <div class="card">
           <div class="card__image"></div>
           <div class="card__text">
             <h2 class="card__title">Наименование товара</h2>
@@ -44,7 +44,7 @@
             <h2 class="card__price">10 000 руб.</h2>
           </div>
           <div class="card__del"><img /></div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -277,11 +277,6 @@ export default {
       const price = document.createElement('p');
       const del = document.createElement('div');
 
-
-
-
-
-
       card.classList.add('card');
       img.classList.add('card__image');
       title.classList.add('card__title');
@@ -306,7 +301,15 @@ export default {
       let del = document.querySelector('.card__del')
       console.log(del, 'fgfgfgfgfgfgfg')
       // del.addEventlistener('click', () => {alert('loh')})
+    let dels = document.querySelectorAll('.card__del')
+    console.log(dels)
+    for(let el of dels) {
+      el.addEventListener('click', () => {
+        console.log('lol')
+        el.parentElement.remove(el)
 
+      })
+    }
     }
 
     lol()
