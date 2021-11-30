@@ -2,15 +2,17 @@
   <div class="main">
     <div class="fist-column">
       <h1 class="fist-column__header">Добавление товара</h1>
-      <div class="form">
-        <h4 class="form__title">Наименование товара</h4>
+
+
+        <h4 class="form__title" >Наименование товара</h4>
         <input
           class="form__input"
           type="text"
           placeholder="Введите наименование товара"
           v-model="title"
+          required
         />
-        <span>Поле является обязательным</span>
+        <span class="form__error">Поле является обязательным</span>
         <h4 class="form__title">Описание товара</h4>
         <textarea
           class="form__area"
@@ -19,13 +21,15 @@
           v-model="descr"
         ></textarea>
         <h4 class="form__title">Ссылка на изображение товара</h4>
-        <input class="form__input" type="text" placeholder="Введите ссылку" v-model="link"/>
-        <span>Поле является обязательным</span>
+        <input class="form__input" placeholder="Введите ссылку" v-model="link"
+        type="url" name="url"
+        />
+        <span class="form__error">Поле является обязательным</span>
         <h4 class="form__title">Цена товара</h4>
-        <input class="form__input" type="text" placeholder="Введите цену" v-model="price"/>
-        <span>Поле является обязательным</span>
-        <button  class="form__button" @click="say()">Добавить товар</button>
-      </div>
+        <input class="form__input"  placeholder="Введите цену" v-model="price"  type="number" min="1"/>
+        <span class="form__error" >Поле является обязательным</span>
+        <button :disabled="!title||!descr||!link||!price"  class="form__button" @click="say()" >Добавить товар</button>
+
     </div>
     <div class="second-column">
       <button class="button-sort">
@@ -158,6 +162,7 @@ span {
   text-align: center;
   letter-spacing: -0.02em;
   color: #b4b4b4;
+  cursor: pointer;
 }
 
 .form__button_ok {
@@ -253,6 +258,34 @@ span {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
+.form__error {
+  display: none;
+}
+
+.form__input:valid:not(:placeholder-shown) {
+	border-color: #ffdb4d;
+}
+
+.form__input:invalid:not(:placeholder-shown) {
+	border-color: #df4b41;
+}
+
+.form__input:invalid:not(:placeholder-shown) + .form__error {
+	display: block;
+}
+
+.form__button:not(:disabled) {
+  background-color: #064f8b;
+  color: red;
+}
+
+
+@media screen and (max-width:1024px) {
+  .main {flex-direction: column;
+    align-items: center;
+  }
+}
 </style>
 
 
@@ -287,7 +320,7 @@ export default {
     img.src = this.link;
     title.textContent = this.title;
     description.textContent = this.descr;
-    price.textContent = this.price;
+    price.textContent = this.price + ' rub';
     //https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/240px-Cat03.jpg
 
 
@@ -313,10 +346,18 @@ export default {
     }
 
     lol()
-    }
+    },
+  validErr: function () {
+    const validationErrors = {
+    noValue: "Это обязательное поле",
+    range: "Должно быть от 2 до 30 символов",
+    link: "Здесь должна быть ссылка",
+  };
+  }
   }
 
 }
 </script>
 
 
+// pattern="http(s)?:\/\/(www\.)?(((([a-z]+(-[a-z]+)+)|([a-z]{2,}))(\.[a-z]{2,6})+)|(([1-9]|([1-9]\d)|(1\d\d)|(2[1-4]\d)|(25[0-5]))(\.([0-9]|([1-9]\d)|(1\d\d)|(2[0-4]\d)|(25[0-5]))){2}\.([1-9]|([1-9]\d)|(1\d\d)|(2[1-4]\d)|(25[0-5]))))((:(([1-9]\d)|([1-9]\d\d)|([1-9]\d\d\d)|([1-9]\d\d\d\d)))?)((/[a-z]{2,})*(#)?)"
