@@ -3,6 +3,8 @@
 ## Build Setup
 
 ```bash
+
+Test project add/delete cards
 # install dependencies
 $ npm install
 

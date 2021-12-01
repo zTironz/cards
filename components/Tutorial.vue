@@ -21,9 +21,7 @@
           v-model="descr"
         ></textarea>
         <h4 class="form__title">Ссылка на изображение товара</h4>
-        <input class="form__input" placeholder="Введите ссылку" v-model="link"
-        type="url" name="url"
-        />
+        <input class="form__input" placeholder="Введите ссылку" v-model="link" type="text" />
         <span class="form__error">Поле является обязательным</span>
         <h4 class="form__title">Цена товара</h4>
         <input class="form__input"  placeholder="Введите цену" v-model="price"  type="number" min="1"/>
@@ -32,10 +30,10 @@
 
     </div>
     <div class="second-column">
-      <button class="button-sort">
+      <!-- <button class="button-sort">
         <p class="button-sort__text">По умолчанию</p>
         <img src="" />
-      </button>
+      </button> -->
       <div class="cards">
         <!-- <div class="card">
           <div class="card__image"></div>
@@ -65,13 +63,14 @@
 }
 
 .main {
-  width: 1440px;
+  max-width: 1440px;
+  margin: auto;
   display: flex;
   background: rgba(255, 254, 251, 0.8);
 }
 
 .fist-column {
-  width: 332px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   margin: 32px 16px 0 32px;
@@ -199,15 +198,16 @@ span {
 
 .cards {
   margin-top: 16px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 332px);
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 .card {
   position: relative;
-  height: 423px;
+      height: 350px;
+    width: 300px;
   display: flex;
   flex-direction: column;
   background: #fffefb;
@@ -252,11 +252,15 @@ span {
   position: absolute;
   right: -8px;
   top: -8px;
+  cursor: pointer;
   width: 32px;
   height: 32px;
   background: #ff8484;
+  background-image: url('trash.svg');
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  background-repeat: no-repeat;
+    background-position: center;
 }
 
 .form__error {
@@ -284,6 +288,24 @@ span {
 @media screen and (max-width:1024px) {
   .main {flex-direction: column;
     align-items: center;
+  }
+
+  .cards {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .fist-column {
+    margin: 32px 32px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .fist-column {
+    margin: 0;
   }
 }
 </style>
