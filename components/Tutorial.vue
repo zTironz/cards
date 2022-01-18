@@ -202,11 +202,12 @@ span {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+    margin-bottom: 16px;
 }
 
 .card {
   position: relative;
-      height: 350px;
+       height: 400px;
     width: 300px;
   display: flex;
   flex-direction: column;
@@ -215,12 +216,14 @@ span {
     0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
   border: 1px solid red;
+      padding: 5px;
 }
 
 .card__image {
   background: url();
   width: 100%;
   height: 200px;
+  object-fit: contain;
 }
 
 .card__text {
@@ -228,25 +231,30 @@ span {
 }
 
 .card__title {
-  margin-bottom: 16px;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 25px;
-  color: #3f3f3f;
+  margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #3f3f3f;
 }
 
 .card__descr {
-  margin-bottom: 32px;
-  font-size: 16px;
-  line-height: 20px;
-  color: #3f3f3f;
+
+    font-size: 16px;
+    line-height: 20px;
+    color: #3f3f3f;
+    overflow: scroll;
+
+    height: 85px;
 }
 
 .card__price {
   font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  color: #3f3f3f;
+    font-size: 24px;
+    line-height: 30px;
+    color: #3f3f3f;
+    margin-top: 16px;
 }
 .card__del {
   position: absolute;
