@@ -122,7 +122,7 @@
   height: 36px;
   background: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  border: none;
+  border: 1px solid darkred;
   border-radius: 4px;
 }
 
@@ -139,7 +139,7 @@ span {
   margin-bottom: 16px;
   background: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  border: none;
+  border: 1px solid darkred;
   border-radius: 4px;
 }
 
@@ -154,7 +154,7 @@ span {
   height: 36px;
   margin-top: 8px;
   background: #eeeeee;
-  border: none;
+  border: 1px solid darkred;
   border-radius: 10px;
   font-size: 12px;
   line-height: 15px;
